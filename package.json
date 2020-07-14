@@ -1,0 +1,28 @@
+{
+  "name": "meeting-scheduler-frontend",
+  "version": "1.0.0",
+  "description": "A web application to schedule a meeting among a group of participants",
+  "homepage": "https://github.com/engloop/meeting-scheduler",
+  "main": "frontend/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/engloop/meeting-scheduler.git"
+  },
+  "keywords": [
+    "react",
+    "schedule",
+    "meetings",
+    "engloop"
+  ],
+  "author": "engloop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/engloop/meeting-scheduler/issues"
+  }
+}
