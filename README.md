@@ -62,3 +62,8 @@ A web application to schedule a meeting among a group of participants
 ## Questions
 1. Strings are being used to store dates. Is there a better way?
 2. 
+
+
+## References
+1. https://github.com/briancappello/flask-react-spa
+2. https://github.com/react-boilerplate/react-boilerplate
