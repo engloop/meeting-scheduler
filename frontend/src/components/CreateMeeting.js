@@ -1,9 +1,8 @@
 import React, {Component, useState} from 'react';
-import {Form, Col, Row, Button} from 'react-bootstrap'
+import {Form, Col, Row, Button, Container} from 'react-bootstrap'
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 
 import "react-datepicker/dist/react-datepicker.css";
-// import 'rsuite/lib/styles/index.less';
 
 
 export class CreateMeeting extends React.Component {
@@ -26,11 +25,16 @@ export class CreateMeeting extends React.Component {
 
 	render() {
 	    return (
+	    	<Container>
+	    	<Row>
+	    	<h1>Create a new meeting!</h1>
+	    	</Row>
+	    	<Row>
 	    	<Form>
-	    		<Form.Row>
+	    		<Form.Row className="with-margin">
 	    			<Form.Control type="text" placeholder="Meeting Name" />
 				</Form.Row>
-				<Form.Row>
+				<Form.Row className="with-margin">
 		      		<DateRangePicker
 		      			value={this.state.value}
 		      			onChange={(value) => this.onChange(value)}
@@ -42,6 +46,8 @@ export class CreateMeeting extends React.Component {
   				</Button>
 		     
 	      </Form>
+	      </Row>
+	      </Container>
 	    );
   }
 

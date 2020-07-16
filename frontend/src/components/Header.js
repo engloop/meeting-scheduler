@@ -1,19 +1,18 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
+import {Navbar} from 'react-bootstrap'
+
 
 
 export const Header = () =>
-	<header>
-		<AppBar position="static">
-		<Toolbar>
-			<Typography variant="h4" >
-      			Meeting Scheduler
-    		</Typography>
-    	</Toolbar>
+	<header className="with-margin">
+		<Navbar position="static" bg="primary" variant="dark">
+    	<Navbar.Brand href="#home">Meeting Scheduler</Navbar.Brand>
+
+    	
 	  
-		</AppBar>
+		</Navbar>
 	</header>;
 
 
