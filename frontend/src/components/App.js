@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import {CreateMeeting} from './CreateMeeting.js'
+import { Container } from 'react-bootstrap';
+
+
 
 class App extends Component {
     render() {
         return (
-            <div>
+            <Container>
                 <h1>Meeting Scheduler</h1>
                 <CreateMeeting />
-            </div>
+            </Container>
         );
     }
 }
