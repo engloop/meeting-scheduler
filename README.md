@@ -67,3 +67,4 @@ A web application to schedule a meeting among a group of participants
 ## References
 1. https://github.com/briancappello/flask-react-spa
 2. https://github.com/react-boilerplate/react-boilerplate
+3. https://github.com/dternyak/React-Redux-Flask
