@@ -16,7 +16,7 @@ def read_requirements(filename):
 
 
 setup(
-    name='meeting-scheduler',
+    name='app',
     version='0.1.0',
     description='',
     url='https://github.com/engloop/meeting-scheduler',
