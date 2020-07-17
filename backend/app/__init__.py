@@ -21,8 +21,8 @@ def create_app(test_config=None):
 
     try:
         os.makedirs(app.instance_path)
-    except OSError as error:
-        print(error)
+    except OSError:
+        pass
 
     # a simple page that says hello
     @app.route('/test')
