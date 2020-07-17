@@ -7,4 +7,5 @@ pip-tools
 
 # testing
 pytest
+coverage
 pytest-flask
