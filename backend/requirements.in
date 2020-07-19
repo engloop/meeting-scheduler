@@ -1,0 +1,7 @@
+# config file used to generate requirements.txt
+#
+# usage:
+# pip-compile requirements.in --output-file requirements.txt
+
+flask
+firebase-admin

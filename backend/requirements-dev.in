@@ -1,0 +1,11 @@
+# config file used to generate requirements-dev.txt
+#
+# usage:
+# pip-compile requirements-dev.in --output-file requirements-dev.txt
+
+pip-tools
+
+# testing
+pytest
+coverage
+pytest-flask
