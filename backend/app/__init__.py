@@ -3,10 +3,18 @@
 import os
 from flask import Flask
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+
+    # Initialize an instance of Cloud Firestore
+    cred = credentials.Certificate("instance/serviceAccountKey.json")
+    firebase_admin.initialize_app(cred)
 
     app.config.from_mapping(
         SECRET_KEY='dev'    # TODO: change this in production
@@ -23,6 +31,12 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    from . import create
+    app.register_blueprint(create.bp)
+
+    from . import meeting
+    app.register_blueprint(meeting.bp)    
 
     # a simple page that says hello
     @app.route('/test')
