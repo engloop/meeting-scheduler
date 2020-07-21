@@ -16,6 +16,10 @@ $ pip install -r requirements-dev.txt
 
 ## Steps to run
 ```bash
+# make sure json for service account is present in the instance folder
+# stuff inside the instance folder is never pushed to github
+
+# start the backend server
 $ ./run_app.sh
 ```
 
