@@ -2,8 +2,6 @@ import React, {Component, useState} from 'react';
 import {Form, Col, Row, Button, Container} from 'react-bootstrap'
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 
-import "react-datepicker/dist/react-datepicker.css";
-
 
 export class CreateMeeting extends React.Component {
 	constructor(props) {
