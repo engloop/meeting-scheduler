@@ -16,31 +16,40 @@ export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			startDate: new Date(),
-			endDate: new Date(),
-			value: [new Date(), new Date()],
+			dates: [new Date(), new Date()],
 			meetingName: ""
 		}
 	    
   };
 
   changeValue(e,type) {
-  	console.log("changeValue");
+  	// console.log("changeValue");
+  	// console.log(e);
   	const value=e.target.value;
   	const next_state={}
   	next_state[type]=value;
   	this.setState(next_state, () => {
+  		// console.log(this.state);
+  	});
+  }
+
+  changeDateRange(e) {
+  	// console.log("changeDateRange");
+  	// console.log(e);
+  	const startDate=e[0];
+  	const endDate=e[1];
+  	const next_state={}
+  	next_state["dates"]=[startDate, endDate];
+  	this.setState(next_state, () => {
   		console.log(this.state);
   	});
-  	
   }
 
 
   handleSubmit(e) {
   	e.preventDefault();
-  	console.log(e);
-
-	submit_meeting(this.props.startDate)
+  	// console.log(e);
+	submit_meeting(this.state)
 	// .then(parseJSON)
 	.then(response => {
 		dispatch(receiveMeetingData(response.result));
@@ -64,11 +73,10 @@ export class CreateMeeting extends React.Component {
 				</Form.Row>
 				<Form.Row className="with-margin">
 		      		<DateRangePicker
-		      			value={this.state.value}
-		      			onChange={(value) => this.changeValue(value)}
+		      			value={this.state.dates}
+		      			onChange={(value) => this.changeDateRange(value)}
 		      		/>
 		    	</Form.Row>
-		      
 		    	<Button variant="primary" type="submit" onClick={(e) => this.handleSubmit(e)}>
     				Submit
   				</Button>
