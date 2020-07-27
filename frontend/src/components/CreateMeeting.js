@@ -1,13 +1,13 @@
 import React, {Component, useState} from 'react';
-// import { bindActionCreators } from 'redux';
 import {Form, Col, Row, Button, Container} from 'react-bootstrap'
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
-// import * as actionCreators from '../actions';
 import PropTypes from 'prop-types';
 import { submit_meeting } from '../utils/http_functions';
+// import {withRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
-
+// import { bindActionCreators } from 'redux';
+// import * as actionCreators from '../actions';
 // function mapDispatchToProps(dispatch) {
 // 	return bindActionCreators(actionCreators, dispatch)
 // }
@@ -15,9 +15,11 @@ import { submit_meeting } from '../utils/http_functions';
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
+		const redirectRoute='/after_create';
 		this.state = {
 			dates: [new Date(), new Date()],
-			meetingName: ""
+			meetingName: "",
+			redirectTo: redirectRoute,
 		}
 	    
   };
@@ -56,6 +58,10 @@ export class CreateMeeting extends React.Component {
 	})
 	.catch(e => {
 		alert(e);
+	});
+	this.props.history.push({
+		pathname: '/meeting-success',
+		// state: {meetingName: "Test Meeting"}
 	});
   }
   
