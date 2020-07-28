@@ -19,7 +19,6 @@ def create():
 	doc = {}
 	doc["id"] = id
 	doc["meetingName"] = req_obj['data']['meetingName']
-	doc["creatorName"] = "Creator"		# TODO: send meeting creator name from front-end
 	doc["dates"] = req_obj['data']['dates']
 	# print(doc)
 
