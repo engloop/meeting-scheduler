@@ -9,13 +9,11 @@ export class AfterCreate extends React.Component {
 		super(props);		
 		this.state = {
 			meetingId: this.props.match.params.meetingId
-		}
-		
-	    
+		}  
   };
 
 	render() {
-		console.log(this.state.meetingId);
+		// console.log(this.state.meetingId);
 		return (
 			<Container>
 				<h1>meeting {this.state.meetingId} created!</h1>

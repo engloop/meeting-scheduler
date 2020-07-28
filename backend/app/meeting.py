@@ -2,7 +2,7 @@
 from flask import Blueprint
 from firebase_admin import firestore
 
-bp = Blueprint('meeting', __name__, url_prefix='/meeting')
+bp = Blueprint('meeting', __name__, url_prefix='/api')
 db = firestore.client()
 
 @bp.route('/<meeting_id>', methods=(['GET', 'POST']))

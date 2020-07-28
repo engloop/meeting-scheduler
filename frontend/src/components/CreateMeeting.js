@@ -58,10 +58,6 @@ export class CreateMeeting extends React.Component {
 	.catch(e => {
 		alert(e);
 	});
-	// console.log(`/meeting-success/${meetingId}`);
-	// this.props.history.push(`/meeting-success/`);
-
-	// this.props.history.push(`/meeting-success/${meetingId}`);
   }
   
 
