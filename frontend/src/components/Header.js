@@ -8,7 +8,7 @@ import {Navbar} from 'react-bootstrap'
 export const Header = () =>
 	<header className="with-margin">
 		<Navbar position="static" bg="primary" variant="dark">
-    	<Navbar.Brand href="#home">Meeting Scheduler</Navbar.Brand>
+    	<Navbar.Brand href="/">Meeting Scheduler</Navbar.Brand>
 
     	
 	  

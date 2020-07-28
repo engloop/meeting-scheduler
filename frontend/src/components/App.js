@@ -1,20 +1,27 @@
 import React, {Component} from 'react';
 import {CreateMeeting} from './CreateMeeting.js'
+import {AfterCreate} from './AfterCreate.js'
 import { Container, Row, Col } from 'react-bootstrap';
 import {Header} from './Header.js';
 import {Footer} from './Footer.js';
+import {withRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
 
     render() {
         return (
+    		<Container>
+      			<Header />
+      			<Switch>
+            		<Route path='/' component={CreateMeeting} exact />
+            		<Route path='/meeting-success/:meetingId' component={AfterCreate} />
+            		// <Route path="/meeting/:meetingId" component={AfterCreate} />
 
-            <Container>
-      <Header />
-            <CreateMeeting />
-      
+      			</Switch>
             </Container>
+            
         );
     }
 }

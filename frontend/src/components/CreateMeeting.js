@@ -1,30 +1,31 @@
 import React, {Component, useState} from 'react';
-// import { bindActionCreators } from 'redux';
 import {Form, Col, Row, Button, Container} from 'react-bootstrap'
 import DateRangePicker from "@wojtekmaj/react-daterange-picker";
-// import * as actionCreators from '../actions';
 import PropTypes from 'prop-types';
 import { submit_meeting } from '../utils/http_functions';
+// import {withRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
-
+// import { bindActionCreators } from 'redux';
+// import * as actionCreators from '../actions';
 // function mapDispatchToProps(dispatch) {
 // 	return bindActionCreators(actionCreators, dispatch)
 // }
 
+// const meetingId="kda13kd01kd3";
+
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
+		const redirectRoute='/after_create';
 		this.state = {
 			dates: [new Date(), new Date()],
-			meetingName: ""
+			meetingName: "",
+			redirectTo: redirectRoute,
 		}
-	    
   };
 
   changeValue(e,type) {
-  	// console.log("changeValue");
-  	// console.log(e);
   	const value=e.target.value;
   	const next_state={}
   	next_state[type]=value;
@@ -34,8 +35,6 @@ export class CreateMeeting extends React.Component {
   }
 
   changeDateRange(e) {
-  	// console.log("changeDateRange");
-  	// console.log(e);
   	const startDate=e[0];
   	const endDate=e[1];
   	const next_state={}
@@ -48,15 +47,21 @@ export class CreateMeeting extends React.Component {
 
   handleSubmit(e) {
   	e.preventDefault();
-  	// console.log(e);
+  	console.log("submit");
 	submit_meeting(this.state)
 	// .then(parseJSON)
 	.then(response => {
-		dispatch(receiveMeetingData(response.result));
+		var meetingId=response.data;
+		console.log(meetingId);
+		this.props.history.push(`/meeting-success/${meetingId}`);
 	})
 	.catch(e => {
 		alert(e);
 	});
+	// console.log(`/meeting-success/${meetingId}`);
+	// this.props.history.push(`/meeting-success/`);
+
+	// this.props.history.push(`/meeting-success/${meetingId}`);
   }
   
 
