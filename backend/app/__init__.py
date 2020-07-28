@@ -43,8 +43,5 @@ def create_app(test_config=None):
     def test():
         return 'Hello there! Your app is working.'
 
-    # @app.route('/api/create')
-    # def create():
-    #     return 'Hello there! Your app is working.'
 
     return app
