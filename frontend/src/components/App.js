@@ -16,7 +16,7 @@ class App extends Component {
       			<Header />
       			<Switch>
             		<Route path='/' component={CreateMeeting} exact />
-            		<Route path='/meeting-success' component={AfterCreate} />
+            		<Route path='/meeting-success/:meetingId' component={AfterCreate} />
             		// <Route path="/meeting/:meetingId" component={AfterCreate} />
 
       			</Switch>

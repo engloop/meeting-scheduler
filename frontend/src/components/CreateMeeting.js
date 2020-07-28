@@ -12,6 +12,8 @@ import { submit_meeting } from '../utils/http_functions';
 // 	return bindActionCreators(actionCreators, dispatch)
 // }
 
+const meetingId="kda13kd01kd3";
+
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,7 +23,6 @@ export class CreateMeeting extends React.Component {
 			meetingName: "",
 			redirectTo: redirectRoute,
 		}
-	    
   };
 
   changeValue(e,type) {
@@ -53,16 +54,16 @@ export class CreateMeeting extends React.Component {
   	// console.log(e);
 	submit_meeting(this.state)
 	// .then(parseJSON)
-	.then(response => {
-		dispatch(receiveMeetingData(response.result));
-	})
+	// .then(response => {
+	// 	dispatch(receiveMeetingData(response.result));
+	// })
 	.catch(e => {
 		alert(e);
 	});
-	this.props.history.push({
-		pathname: '/meeting-success',
-		// state: {meetingName: "Test Meeting"}
-	});
+	// console.log(`/meeting-success/${meetingId}`);
+	// this.props.history.push(`/meeting-success/`);
+
+	this.props.history.push(`/meeting-success/${meetingId}`);
   }
   
 

@@ -12,15 +12,21 @@ const app = express()
 const customHost = process.env.HOST
 const host = customHost || null // Let http.Server use its default IPv6/4 host
 const frontendHost = customHost || 'localhost'
-const frontendPort = process.env.PORT || 8888
+const frontendPort = process.env.PORT || 8080
 
 const backendPort = process.env.API_PORT || 5000
 const backendHost = process.env.API_HOST || frontendHost
 
 
-app.use(/^\/api|auth\//, proxy(`http://${backendHost}:${backendPort}`, {
-    proxyReqPathResolver: (req) => req.baseUrl + req.url,
-}))
+// app.all(/^\/api\/(.*)/, proxy(`http://${backendHost}:${backendPort}`, {
+//     proxyReqPathResolver: (req) => req.baseUrl + req.url,
+// }))
+
+// app.use(proxy('/api', {target: 'localhost:5000'}));
+
+// (/^\/api\/(.*)/, (req, res) => {
+//     proxy.on(req, res, { target: 'http://localhost:5000' });
+// });
 
 addDevMiddlewares(app, webpackConfig)
 

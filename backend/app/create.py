@@ -3,10 +3,11 @@ import uuid
 from flask import Blueprint
 from firebase_admin import firestore
 
-bp = Blueprint('create', __name__, url_prefix='/create')
+bp = Blueprint('create', __name__, url_prefix='api')
 db = firestore.client()
 
-@bp.route('/', methods=(['GET', 'POST']))
+@bp.route('/create', methods=(['GET', 'POST']))
+@app.route('/api/create', methods=(['GET', 'POST']))
 def create():
     id = str(uuid.uuid4())
     doc_ref = db.collection(u'meetings').document(id)
