@@ -2,6 +2,8 @@ const express = require('express');
 const proxy = require('express-http-proxy')
 const url = require('url')
 const addDevMiddlewares = require('./addDevMiddlewares')
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 
 const webpackConfig = require('../webpack.config')
 const logger = require('./logger')
@@ -27,6 +29,14 @@ const backendHost = process.env.API_HOST || frontendHost
 // (/^\/api\/(.*)/, (req, res) => {
 //     proxy.on(req, res, { target: 'http://localhost:5000' });
 // });
+
+app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  )
 
 addDevMiddlewares(app, webpackConfig)
 
