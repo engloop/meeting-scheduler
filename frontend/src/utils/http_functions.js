@@ -2,7 +2,9 @@ import axios from 'axios';
 
 
 export function submit_meeting(data) {
-	return axios.get('/api/create', {
+	// console.log("submit_meeting");
+	// console.log(data);
+	return axios.post('/api/create', {
 		data
 	});
 }

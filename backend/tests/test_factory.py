@@ -1,9 +1,16 @@
-from app import create_app
+import pytest
 
 
-def test_config():
-    assert not create_app().testing
-    assert create_app({'TESTING': True}).testing
+# @pytest.fixture
+# def func_create_app():
+#     from app import create_app
+#     return create_app
+
+# def test_config(func_create_app):
+#     create_app = func_create_app()
+    # app = create_app({'TESTING': True})
+    # assert not create_app().testing
+    # assert create_app({'TESTING': True}).testing
 
 
 def test_working(client):
