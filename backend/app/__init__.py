@@ -43,5 +43,4 @@ def create_app(test_config=None):
     def test():
         return 'Hello there! Your app is working.'
 
-
     return app
