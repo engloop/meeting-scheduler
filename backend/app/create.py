@@ -4,6 +4,8 @@ from flask import Blueprint
 from flask import request
 from firebase_admin import firestore
 
+from .utils import get_dates_in_range
+
 bp = Blueprint('create', __name__, url_prefix='/api')
 db = firestore.client()
 
@@ -20,6 +22,8 @@ def create():
 	doc["id"] = id
 	doc["meetingName"] = req_obj['data']['meetingName']
 	doc["dates"] = req_obj['data']['dates']
+	# dates are in ISO-8601 format
+	# get_dates_in_range(start, stop)
 	# print(doc)
 
 	# push to firestore
@@ -27,4 +31,5 @@ def create():
 	doc_ref.set(doc)
 	
 	return id
+
 
