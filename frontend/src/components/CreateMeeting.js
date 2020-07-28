@@ -12,7 +12,7 @@ import { submit_meeting } from '../utils/http_functions';
 // 	return bindActionCreators(actionCreators, dispatch)
 // }
 
-const meetingId="kda13kd01kd3";
+// const meetingId="kda13kd01kd3";
 
 export class CreateMeeting extends React.Component {
 	constructor(props) {
@@ -26,8 +26,6 @@ export class CreateMeeting extends React.Component {
   };
 
   changeValue(e,type) {
-  	// console.log("changeValue");
-  	// console.log(e);
   	const value=e.target.value;
   	const next_state={}
   	next_state[type]=value;
@@ -37,8 +35,6 @@ export class CreateMeeting extends React.Component {
   }
 
   changeDateRange(e) {
-  	// console.log("changeDateRange");
-  	// console.log(e);
   	const startDate=e[0];
   	const endDate=e[1];
   	const next_state={}
@@ -51,19 +47,21 @@ export class CreateMeeting extends React.Component {
 
   handleSubmit(e) {
   	e.preventDefault();
-  	// console.log(e);
+  	console.log("submit");
 	submit_meeting(this.state)
 	// .then(parseJSON)
-	// .then(response => {
-	// 	dispatch(receiveMeetingData(response.result));
-	// })
+	.then(response => {
+		var meetingId=response.data;
+		console.log(meetingId);
+		this.props.history.push(`/meeting-success/${meetingId}`);
+	})
 	.catch(e => {
 		alert(e);
 	});
 	// console.log(`/meeting-success/${meetingId}`);
 	// this.props.history.push(`/meeting-success/`);
 
-	this.props.history.push(`/meeting-success/${meetingId}`);
+	// this.props.history.push(`/meeting-success/${meetingId}`);
   }
   
 

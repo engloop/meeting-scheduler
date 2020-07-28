@@ -7,7 +7,6 @@ bp = Blueprint('create', __name__, url_prefix='/api')
 db = firestore.client()
 
 @bp.route('/create', methods=(['GET', 'POST']))
-# @app.route('/api/create', methods=(['GET', 'POST']))
 def create():
 	print("create")
 	id = str(uuid.uuid4())
@@ -16,5 +15,5 @@ def create():
     	u'title': u'Birthday Party',
     	u'participants': u'participants list'
 	})
-	return 'create'
+	return id
 

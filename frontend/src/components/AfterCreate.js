@@ -20,6 +20,8 @@ export class AfterCreate extends React.Component {
 			<Container>
 				<h1>meeting {this.state.meetingId} created!</h1>
 				<p>Share this link to invite friends to your meeting: </p>
+				<p>www.xyz/meetings/{this.state.meetingId}</p>
+
 			</Container>
 		);
 
