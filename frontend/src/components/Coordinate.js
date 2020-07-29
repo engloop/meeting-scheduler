@@ -12,21 +12,13 @@ export class Coordinate extends React.Component {
 	};
 
 	 componentDidMount() {
-	 	console.log(this.state.meetingId);
 	 	get_meeting_data(this.state.meetingId)
 	 	.then(response => {
-	 			console.log(response);
-	 			this.setState({
-	 				meetingName: response["data"]["meetingName"]
-	 			});
-	 			})
-	 	// console.log(promise)
-	 	// promise.then(result=>
-	 	// 	this.seState({
-	 	// 		meetingName:meetingName
-	 	// 	})
-	 	// 	)
-	 	// console.log(result.data);
+ 			console.log(response);
+ 			this.setState({
+ 				meetingName: response["data"]["meetingName"]
+ 			});
+		})
   }
 
   render() {
