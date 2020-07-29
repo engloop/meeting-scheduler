@@ -47,9 +47,7 @@ export class CreateMeeting extends React.Component {
 
   handleSubmit(e) {
   	e.preventDefault();
-  	console.log("submit");
 	submit_meeting(this.state)
-	// .then(parseJSON)
 	.then(response => {
 		var meetingId=response.data;
 		console.log(meetingId);

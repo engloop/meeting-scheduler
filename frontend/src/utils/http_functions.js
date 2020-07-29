@@ -10,7 +10,11 @@ export function submit_meeting(data) {
 }
 
 export function get_meeting_data(meeting_id) {
+	console.log("get_meeting_data", meeting_id);
 	return axios.get('/api/meeting', {
-		meeting_id
+		params: {
+			meeting_id: meeting_id
+		}
+		
 	});
 }
