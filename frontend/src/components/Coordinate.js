@@ -40,7 +40,9 @@ export class Coordinate extends React.Component {
   	console.log(this.state.meetingDates);
   	return(
   		<Container>
-	  		<h1>{this.state.meetingName}</h1>
+  			<div class="with-margin">
+	  			<h1>{this.state.meetingName}</h1>
+	  		</div>
 	  		<Table data={this.state.meetingDates}/>
 	  	</Container>
   	);

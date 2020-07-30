@@ -11,10 +11,13 @@ export class Table extends React.Component {
 		// this.getHeader = this.getHeader.bind(this);
 		// this.getRowsData = this.getRowsData.bind(this);
 		// this.getKeys = this.getKeys.bind(this);
+		this.statee={
+			
+		}
 	}
 
 	getDates(startDate, stopDate) {
-	    var dateArray = [];
+	    var dateArray = [""];
 	    var currentDate = moment(startDate);
 	    var stopDate = moment(stopDate);
 	    while (currentDate <= stopDate+1) {
@@ -22,6 +25,14 @@ export class Table extends React.Component {
 	        currentDate = moment(currentDate).add(1, 'days');
 	    }
 	    return dateArray;
+	}
+
+	getLastRowText() {
+		return 
+	}
+
+	getLastRow() {
+		return <th><input type="text" /></th>
 	}
 
  	getHeader() {
@@ -49,6 +60,10 @@ export class Table extends React.Component {
 	 					<tr>{this.getHeader()}</tr>
 	 				</thead>
 	 				<tbody>
+	 				<tr>
+	 					<th><input type="text" /></th>
+	 					{this.getLastRow()}
+	 				</tr>
 	 				</tbody>
 	 			</table>
 	 		</div>

@@ -17,11 +17,9 @@ import { submit_meeting } from '../utils/http_functions';
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
-		const redirectRoute='/after_create';
 		this.state = {
 			dates: [new Date(), new Date()],
 			meetingName: "",
-			redirectTo: redirectRoute,
 		}
   };
 
