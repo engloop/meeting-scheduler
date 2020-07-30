@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { get_meeting_data } from '../utils/http_functions';
 import { Container, Row, Col } from 'react-bootstrap';
 import {Table} from './Table';
+const Moment = require('moment');
+const MomentRange = require('moment-range');
+const moment = MomentRange.extendMoment(Moment);
 
 
 export class Coordinate extends React.Component {
@@ -10,26 +13,31 @@ export class Coordinate extends React.Component {
 		this.state = {
 			meetingId: this.props.match.params.meetingId,
 			meetingName:"",
-			meetingDates:["x"],
-			tableData:[
-	          {'fruit': 'Apple', 'cost': 100},
-	          {'fruit': 'Orange', 'cost': 50},
-	          {'fruit': 'Banana', 'cost': 35},
-	          {'fruit': 'Mango', 'cost': 70},
-	          {'fruit': 'Pineapple', 'cost': 45},
-	          {'fruit': 'Papaya', 'cost': 40},
-	          {'fruit': 'Watermelon', 'cost': 35}
-	        ]
+			meetingDates:["2020-01-01"],
+	
 		}
 	};
+
+	getDates(startDate, stopDate) {
+	    var dateArray = [];
+	    var currentDate = moment(startDate);
+	    var stopDate = moment(stopDate);
+	    while (currentDate <= stopDate+1) {
+	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+	        currentDate = moment(currentDate).add(1, 'days');
+	    }
+	    return dateArray;
+	}
+
 
 	 componentDidMount() {
 	 	get_meeting_data(this.state.meetingId)
 	 	.then(response => {
  			console.log(response);
+ 			const dates=this.getDates(response["data"]["dates"][0],response["data"]["dates"][1]);
  			this.setState({
  				meetingName: response["data"]["meetingName"],
- 				meetingDates: response["data"]["dates"]
+ 				meetingDates: dates
  			});
 		})
   }
