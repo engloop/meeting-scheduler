@@ -17,11 +17,9 @@ import { submit_meeting } from '../utils/http_functions';
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
-		const redirectRoute='/after_create';
 		this.state = {
 			dates: [new Date(), new Date()],
 			meetingName: "",
-			redirectTo: redirectRoute,
 		}
   };
 
@@ -47,9 +45,7 @@ export class CreateMeeting extends React.Component {
 
   handleSubmit(e) {
   	e.preventDefault();
-  	console.log("submit");
 	submit_meeting(this.state)
-	// .then(parseJSON)
 	.then(response => {
 		var meetingId=response.data;
 		console.log(meetingId);
@@ -58,10 +54,6 @@ export class CreateMeeting extends React.Component {
 	.catch(e => {
 		alert(e);
 	});
-	// console.log(`/meeting-success/${meetingId}`);
-	// this.props.history.push(`/meeting-success/`);
-
-	// this.props.history.push(`/meeting-success/${meetingId}`);
   }
   
 
