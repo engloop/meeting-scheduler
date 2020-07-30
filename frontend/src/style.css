@@ -6,3 +6,10 @@ body {
 .with-margin {
   margin-bottom: 20px;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+td, th{
+  padding: 5px;
+}
