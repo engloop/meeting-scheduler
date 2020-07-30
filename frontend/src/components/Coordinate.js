@@ -43,13 +43,13 @@ export class Coordinate extends React.Component {
   }
 
   render() {
-  	console.log("coordinate");
-  	console.log(this.state.meeteingName);
-  	console.log(this.state.meetingDates);
+  	// console.log("coordinate");
+  	// console.log(this.state.meeteingName);
+  	// console.log(this.state.meetingDates);
   	return(
   		<Container>
   			<div class="with-margin">
-	  			<h1>{this.state.meetingName}</h1>
+	  			<h1>Meeting Name: {this.state.meetingName}</h1>
 	  		</div>
 	  		<Table data={this.state.meetingDates}/>
 	  	</Container>

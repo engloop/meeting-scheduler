@@ -6,14 +6,6 @@ import { submit_meeting } from '../utils/http_functions';
 // import {withRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
-// import { bindActionCreators } from 'redux';
-// import * as actionCreators from '../actions';
-// function mapDispatchToProps(dispatch) {
-// 	return bindActionCreators(actionCreators, dispatch)
-// }
-
-// const meetingId="kda13kd01kd3";
-
 export class CreateMeeting extends React.Component {
 	constructor(props) {
 		super(props);
@@ -48,7 +40,6 @@ export class CreateMeeting extends React.Component {
 	submit_meeting(this.state)
 	.then(response => {
 		var meetingId=response.data;
-		console.log(meetingId);
 		this.props.history.push(`/meeting-success/${meetingId}`);
 	})
 	.catch(e => {

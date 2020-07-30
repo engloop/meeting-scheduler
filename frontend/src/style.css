@@ -7,9 +7,21 @@ body {
   margin-bottom: 20px;
 }
 
+.with-margin-small {
+  margin-bottom: 10px;
+}
+
+.with-margin-large {
+  margin-bottom: 30px;
+}
+
+
 table, th, td {
   border: 1px solid black;
 }
 td, th{
   padding: 5px;
+  text-align: center; /* center checkbox horizontally */
+  vertical-align: middle; /* center checkbox vertically */
 }
+

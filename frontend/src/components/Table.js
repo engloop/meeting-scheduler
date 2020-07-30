@@ -1,24 +1,30 @@
 import React, {Component} from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { submit_availability } from '../utils/http_functions';
 
 
 export class Table extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("table");
-		console.log(this.props.data);
-		// this.getHeader = this.getHeader.bind(this);
-		// this.getRowsData = this.getRowsData.bind(this);
-		// this.getKeys = this.getKeys.bind(this);
-		this.state={
-
+		this.state = {
+			datesAvailable: [],
+			userName: ""
 		}
 	}
 
 	getLastRow() {
 		return this.props.data.map((date)=>{
-			return <th> <input type="checkbox"/></th>
+			return <td> <input type="checkbox"/></td>
 		})
 	}
+
+	handleSubmit(e) {
+	  	e.preventDefault();
+		submit_availability(this.state)
+		.catch(e => {
+			alert(e);
+		});
+  	}
 
  	getHeader() {
 		return this.props.data.map((date)=>{
@@ -30,7 +36,8 @@ export class Table extends React.Component {
 
 	 render() {
 	 	return (
-	 		<div>
+	 		<Container>
+	 		<div class="with-margin-small">
 	 			<table>
 	 				<thead>
 	 					<tr>
@@ -40,12 +47,16 @@ export class Table extends React.Component {
 	 				</thead>
 	 				<tbody>
 	 				<tr>
-	 					<th><input type="text" /></th>
+	 					<td><input type="text" /></td>
 	 					{this.getLastRow()}
 	 				</tr>
 	 				</tbody>
 	 			</table>
-	 		</div>
+	 			</div>
+	 			<div>
+ 			  <Button variant="primary" type="submit" onClick={(e) => this.handleSubmit(e)}>Submit</Button>
+ 			  </div>
+	 		</Container>
 	 	);
 	 }
 }
