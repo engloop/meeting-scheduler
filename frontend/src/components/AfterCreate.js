@@ -18,10 +18,11 @@ export class AfterCreate extends React.Component {
   }
 
 	render() {
-		// console.log(this.state.meetingId);
 		return (
 			<Container>
-				<h1>meeting {this.state.meetingId} created!</h1>
+				<div class="with-margin">
+				<h1>Your meeting was created!</h1>
+				</div>
 				<p>Share this link to invite friends to your meeting: </p>
 				<Link to={`/meeting/${this.state.meetingId}`}>{window.location.host}/meeting/{this.state.meetingId}</Link>
 

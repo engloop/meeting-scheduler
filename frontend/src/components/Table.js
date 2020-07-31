@@ -1,72 +1,89 @@
 import React, {Component} from 'react';
-const Moment = require('moment');
-const MomentRange = require('moment-range');
-const moment = MomentRange.extendMoment(Moment);
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { submit_availability } from '../utils/http_functions';
+
 
 export class Table extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("table");
-		console.log(this.props.data);
-		// this.getHeader = this.getHeader.bind(this);
-		// this.getRowsData = this.getRowsData.bind(this);
-		// this.getKeys = this.getKeys.bind(this);
-		this.statee={
-			
+		this.state = {
+			datesAvailable: {},
+			userName: ""
 		}
 	}
 
-	getDates(startDate, stopDate) {
-	    var dateArray = [""];
-	    var currentDate = moment(startDate);
-	    var stopDate = moment(stopDate);
-	    while (currentDate <= stopDate+1) {
-	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
-	        currentDate = moment(currentDate).add(1, 'days');
-	    }
-	    return dateArray;
-	}
-
-	getLastRowText() {
-		return 
-	}
+	componentDidMount() {
+		this.props.data.map((date)=>{
+			this.state.datesAvailable[date]=false;
+  	});
+  }
 
 	getLastRow() {
-		return <th><input type="text" /></th>
+		return this.props.data.map((date)=>{
+			return <td> <input id={date} type="checkbox" onChange={(value)=>this.updateDatesAvailable(value)}/></td>
+		});
 	}
 
- 	getHeader() {
-		var keys = Object.keys(this.props.data);
-		const startDate=this.props.data[0];
-		const endDate=this.props.data[1];
-		console.log(startDate,endDate);
-		const dates=this.getDates(startDate,endDate);
-		console.log(dates);
-		// console.log("keys", this.props.data[0]);
+	handleSubmit(e) {
+	  	e.preventDefault();
+		submit_availability(this.state)
+		.catch(e => {
+			alert(e);
+		});
+  	}
 
-		return dates.map((date)=>{
-			// d=this.props.data[key]
+
+
+  	updateDatesAvailable(e) {
+  		const changedDate=e.target.id;
+  		const val=e.target.checked
+  		this.setState(prevState=>({
+  			datesAvailable: {
+  				...prevState.datesAvailable,
+  				[changedDate]:val
+  			}
+  		}))
+  	}
+
+ 	getHeader() {
+		return this.props.data.map((date)=>{
 			return <th key={date}>{date.toUpperCase().slice(0,10)}</th>
 	 	})
 	 }
+
+	 changeValue(e,type) {
+	  	const value=e.target.value;
+	  	const next_state={}
+	  	next_state[type]=value;
+	  	this.setState(next_state);
+  }
+
 
 
 
 	 render() {
 	 	return (
-	 		<div>
+	 		<Container>
+	 		<div class="with-margin-small">
 	 			<table>
 	 				<thead>
-	 					<tr>{this.getHeader()}</tr>
+	 					<tr>
+	 						<th></th>
+	 						{this.getHeader()}
+	 					</tr>
 	 				</thead>
 	 				<tbody>
 	 				<tr>
-	 					<th><input type="text" /></th>
+	 					<td><input type="text" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
 	 				</tr>
 	 				</tbody>
 	 			</table>
-	 		</div>
+	 			</div>
+	 			<div>
+ 			  <Button variant="primary" type="submit" onClick={(e) => this.handleSubmit(e)}>Submit</Button>
+ 			  </div>
+	 		</Container>
 	 	);
 	 }
 }

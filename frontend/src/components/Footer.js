@@ -1,6 +1,5 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const style = {
         textAlign: 'center',
@@ -8,14 +7,15 @@ const style = {
         position: 'absolute',
         paddingTop: '15px',
         paddingBottom: '10px',
-        width: '100%',
-        bottom: 0
+        width: '80%',
+        bottom: 0,
     };
 
 export const Footer = () =>
-	<footer>
-	<BottomNavigation style = {style}>
-		<Typography>© Engloop 2020</Typography>
-	</BottomNavigation>
-		
-	</footer>;
+<Container>
+	<footer style = {style}>
+		© Engloop 2020
+	</footer>
+</Container>		
+
+;

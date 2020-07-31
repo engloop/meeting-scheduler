@@ -19,8 +19,8 @@ class App extends Component {
             		<Route path='/' component={CreateMeeting} exact />
             		<Route path='/meeting-success/:meetingId' component={AfterCreate} />
             		<Route path="/meeting/:meetingId" component={Coordinate} />
-
       			</Switch>
+            <Footer />
         </Container>
             
         );
