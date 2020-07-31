@@ -17,5 +17,5 @@ export function get_meeting_data(meeting_id) {
 }
 
 export function submit_availability(data) {
-
+	return "";
 }

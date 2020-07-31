@@ -26,11 +26,10 @@ export class Table extends React.Component {
 
 	handleSubmit(e) {
 	  	e.preventDefault();
-	  	console.log(this.state);
-		// submit_availability(this.state)
-		// .catch(e => {
-		// 	alert(e);
-		// });
+		submit_availability(this.state)
+		.catch(e => {
+			alert(e);
+		});
   	}
 
 

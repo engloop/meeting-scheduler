@@ -26,7 +26,6 @@ export class Coordinate extends React.Component {
 	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
 	        currentDate = moment(currentDate).add(1, 'days');
 	    }
-	    // console.log(dateArray);
 	    return dateArray;
 	}
 
@@ -43,9 +42,7 @@ export class Coordinate extends React.Component {
   }
 
   render() {
-  	// console.log("coordinate");
-  	// console.log(this.state.meeteingName);
-  	// console.log(this.state.meetingDates);
+  	// don't render table until meeting data is fetched
   	if (!this.state.meetingDates) {
   		return <div />
   	}
