@@ -7,23 +7,43 @@ export class Table extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			datesAvailable: [],
+			datesAvailable: {},
 			userName: ""
 		}
 	}
 
+	componentDidMount() {
+		this.props.data.map((date)=>{
+			this.state.datesAvailable[date]=false;
+  	});
+  }
+
 	getLastRow() {
 		return this.props.data.map((date)=>{
-			return <td> <input type="checkbox"/></td>
-		})
+			return <td> <input id={date} type="checkbox" onChange={(value)=>this.updateDatesAvailable(value)}/></td>
+		});
 	}
 
 	handleSubmit(e) {
 	  	e.preventDefault();
-		submit_availability(this.state)
-		.catch(e => {
-			alert(e);
-		});
+	  	console.log(this.state);
+		// submit_availability(this.state)
+		// .catch(e => {
+		// 	alert(e);
+		// });
+  	}
+
+
+
+  	updateDatesAvailable(e) {
+  		const changedDate=e.target.id;
+  		const val=e.target.checked
+  		this.setState(prevState=>({
+  			datesAvailable: {
+  				...prevState.datesAvailable,
+  				[changedDate]:val
+  			}
+  		}))
   	}
 
  	getHeader() {
@@ -31,6 +51,14 @@ export class Table extends React.Component {
 			return <th key={date}>{date.toUpperCase().slice(0,10)}</th>
 	 	})
 	 }
+
+	 changeValue(e,type) {
+	  	const value=e.target.value;
+	  	const next_state={}
+	  	next_state[type]=value;
+	  	this.setState(next_state);
+  }
+
 
 
 
@@ -47,7 +75,7 @@ export class Table extends React.Component {
 	 				</thead>
 	 				<tbody>
 	 				<tr>
-	 					<td><input type="text" /></td>
+	 					<td><input type="text" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
 	 				</tr>
 	 				</tbody>

@@ -13,7 +13,7 @@ export class Coordinate extends React.Component {
 		this.state = {
 			meetingId: this.props.match.params.meetingId,
 			meetingName:"",
-			meetingDates:["2020-01-01"],
+			meetingDates: null,
 	
 		}
 	};
@@ -26,14 +26,14 @@ export class Coordinate extends React.Component {
 	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
 	        currentDate = moment(currentDate).add(1, 'days');
 	    }
+	    // console.log(dateArray);
 	    return dateArray;
 	}
-
 
 	 componentDidMount() {
 	 	get_meeting_data(this.state.meetingId)
 	 	.then(response => {
- 			console.log(response);
+ 			// console.log(response);
  			const dates=this.getDates(response["data"]["dates"][0],response["data"]["dates"][1]);
  			this.setState({
  				meetingName: response["data"]["meetingName"],
@@ -46,6 +46,9 @@ export class Coordinate extends React.Component {
   	// console.log("coordinate");
   	// console.log(this.state.meeteingName);
   	// console.log(this.state.meetingDates);
+  	if (!this.state.meetingDates) {
+  		return <div />
+  	}
   	return(
   		<Container>
   			<div class="with-margin">
