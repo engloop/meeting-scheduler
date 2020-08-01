@@ -1,0 +1,9 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: "331da9e9-5cf6-4bad-a1da-beff3976ca69"
+  strategy: git
+after_deploy:
+  - ./backend/run_app.sh
+  - cd frontend
+  - npm start
