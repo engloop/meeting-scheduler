@@ -12,8 +12,15 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
 
+    # get Flask env variables
+    ENV = os.environ.get("ENV")
+
     # Initialize an instance of Cloud Firestore
-    cred = credentials.Certificate("serviceAccountKey.json")
+    cred = None
+    if ENV == "production":
+        cred = credentials.Certificate("serviceAccountKey.json")
+    else:
+        cred = credentials.Certificate("instance/serviceAccountKey.json")
     firebase_admin.initialize_app(cred)
 
     app.config.from_mapping(
