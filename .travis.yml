@@ -10,23 +10,25 @@ jobs:
       before_install:
         - cd backend
         - openssl aes-256-cbc -K $encrypted_9e09dc4a4da7_key -iv $encrypted_9e09dc4a4da7_iv -in serviceAccountKey.json.enc -out serviceAccountKey.json -d
-        - ./create_env.sh
-        - source activate env
       install:
         - pip install -r requirements.txt
         - pip install -r requirements-dev.txt
       script:
+        - export FLASK_APP=app
+        - export FLASK_ENV=testing
         - python -m pytest
       deploy:
         provider: heroku
         app: meeting-scheduler-backend
         api_key:
-          secure: "VNb8TngMkRFev2MFB4F+S36eiRwxu/h7rMU85epbNHOtaHlVzly2XtX648sxCzQH9IKflTl+w/b8705eNAngpeZkKlSBKJCj4E7pTIFepXyjnlRMWIIxyjWkjyeMU21BohkgoRwTk1iUYRTSRh2SikjIOA7J89A/aIjoAvNQT0OD6zX5UK4taTwWpGopotkGS++QkgJSD+wZpSYvZeI3lNdK7IngHaTmYi/ec+jvLZbWfjCUIXE1Ww3rpX/CN3vUV4t0pszSQ3KIKxRaMdjESVbvki6KjwskIr8WV1tCxMgbSjHNXBtLamcucSlHles31ZXJyj/ID6kpWxmxfwBKqVW/najtoYsXX0yZ763BBJGFXHiH8tA1rhWlDArQoVOpXPJWm7/4eiGdggvNaAl2ibv8uga+h2khsNYGgLq2shEPkjOUKDZL8XbbDmts366n9mEqb7NZ9L1O/drMZx9tp1WuTYYiCrLPzJIE9E8z8+dtSR2YAY+msarhwMVrH/or7ojGYArn10YqT+k+8nshL365zzAeZcbooTJnYX85781kthBDpXDPoPQQvPpvR3wAD3JkV4w9RlwB95zl4Y0DHqdZw549jZ1GYioIv/MJyCuZijIh4BbSAI9tTgx7MaafT0HjLvPo/ztcO2f/BQrBtulIHbkOMxI+/+ghx4/nUF8="
+          secure: "WhXu+dJUxdD6z9svOdimgtDLxCGenE4gDfgnmjXXw+KCk0zI1oXeRDX7FP2CRzt/NxxYiPnH/U0OtfPVyAvzoF4B0UXlE9ONiUsxTijffKz34GjvVR/kGdGk612BkXdaqhNehZZU1oFA68OgCE0NOmxyGI4uETQQAe9LcK806CJkg25glriVcRoQMAuXJiLH3Wt86ce/4GEbgL+HRB+bqV4ro+RM8BV8gfhSZoKU2+XxCv05BipY483zffXDoRwrXdL8ahrpid7bm6molumwFxkVVlSDD23nC7j+9/icwRftpZYgSTpHdQ9tFKSgLoVzMQ/19i4Vufy9IKJrjZcPTFWNXz9chFTz5E1FfkkGj0+vi0L3yLsKMpN9zGxuz7kCUrDaBaBhKYpmK36mI6D161jIB9LYNj1ieoF+9nncAeet28VhkdwSmK6I3Yc80ZczmzYUBQtPqh5H+yS6NMl68buFwVgliIGBj+/nBQghiEY2gL7NY8m/4xv7/AGrcMPxQHhAi40qGTU/Yx5V2ZXJ7O74fHRVN3GEICSOVMmMUrGsx524MXQZNyBpKWRTs2yA8se8oj7VIsolVpYZYJo+xDO+UAVO2/YPJjpwm61YDMN9hVAalXCpo4UJn3MHrSI0trKwIdJBuSb/c6ius8bBkFxykFiDgGmhZUR6wVO259w="
         strategy: git
       on:
         branch: master
       after_deploy:
-        - ./run_app.sh
+        - export FLASK_APP=app
+        - export FLASK_ENV=production
+        - flask run
 
     - language: node_js
       node_js:
@@ -45,7 +47,7 @@ jobs:
         provider: heroku
         app: meeting-scheduler-frontend
         api_key:
-          secure: "VNb8TngMkRFev2MFB4F+S36eiRwxu/h7rMU85epbNHOtaHlVzly2XtX648sxCzQH9IKflTl+w/b8705eNAngpeZkKlSBKJCj4E7pTIFepXyjnlRMWIIxyjWkjyeMU21BohkgoRwTk1iUYRTSRh2SikjIOA7J89A/aIjoAvNQT0OD6zX5UK4taTwWpGopotkGS++QkgJSD+wZpSYvZeI3lNdK7IngHaTmYi/ec+jvLZbWfjCUIXE1Ww3rpX/CN3vUV4t0pszSQ3KIKxRaMdjESVbvki6KjwskIr8WV1tCxMgbSjHNXBtLamcucSlHles31ZXJyj/ID6kpWxmxfwBKqVW/najtoYsXX0yZ763BBJGFXHiH8tA1rhWlDArQoVOpXPJWm7/4eiGdggvNaAl2ibv8uga+h2khsNYGgLq2shEPkjOUKDZL8XbbDmts366n9mEqb7NZ9L1O/drMZx9tp1WuTYYiCrLPzJIE9E8z8+dtSR2YAY+msarhwMVrH/or7ojGYArn10YqT+k+8nshL365zzAeZcbooTJnYX85781kthBDpXDPoPQQvPpvR3wAD3JkV4w9RlwB95zl4Y0DHqdZw549jZ1GYioIv/MJyCuZijIh4BbSAI9tTgx7MaafT0HjLvPo/ztcO2f/BQrBtulIHbkOMxI+/+ghx4/nUF8="
+          secure: "WhXu+dJUxdD6z9svOdimgtDLxCGenE4gDfgnmjXXw+KCk0zI1oXeRDX7FP2CRzt/NxxYiPnH/U0OtfPVyAvzoF4B0UXlE9ONiUsxTijffKz34GjvVR/kGdGk612BkXdaqhNehZZU1oFA68OgCE0NOmxyGI4uETQQAe9LcK806CJkg25glriVcRoQMAuXJiLH3Wt86ce/4GEbgL+HRB+bqV4ro+RM8BV8gfhSZoKU2+XxCv05BipY483zffXDoRwrXdL8ahrpid7bm6molumwFxkVVlSDD23nC7j+9/icwRftpZYgSTpHdQ9tFKSgLoVzMQ/19i4Vufy9IKJrjZcPTFWNXz9chFTz5E1FfkkGj0+vi0L3yLsKMpN9zGxuz7kCUrDaBaBhKYpmK36mI6D161jIB9LYNj1ieoF+9nncAeet28VhkdwSmK6I3Yc80ZczmzYUBQtPqh5H+yS6NMl68buFwVgliIGBj+/nBQghiEY2gL7NY8m/4xv7/AGrcMPxQHhAi40qGTU/Yx5V2ZXJ7O74fHRVN3GEICSOVMmMUrGsx524MXQZNyBpKWRTs2yA8se8oj7VIsolVpYZYJo+xDO+UAVO2/YPJjpwm61YDMN9hVAalXCpo4UJn3MHrSI0trKwIdJBuSb/c6ius8bBkFxykFiDgGmhZUR6wVO259w="
         strategy: git
         project: ./dist/
       on:
