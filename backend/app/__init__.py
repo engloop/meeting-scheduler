@@ -17,7 +17,7 @@ def create_app(test_config=None):
 
     # Initialize an instance of Cloud Firestore
     cred = None
-    if ENV == "production":
+    if ENV == "production" or ENV == "testing":
         cred = credentials.Certificate("serviceAccountKey.json")
     else:
         cred = credentials.Certificate("instance/serviceAccountKey.json")
