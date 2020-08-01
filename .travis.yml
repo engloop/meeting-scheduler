@@ -10,8 +10,6 @@ jobs:
       before_install:
         - cd backend
         - openssl aes-256-cbc -K $encrypted_9e09dc4a4da7_key -iv $encrypted_9e09dc4a4da7_iv -in serviceAccountKey.json.enc -out serviceAccountKey.json -d
-        - ./create_env.sh
-        - source env/bin/activate
       install:
         - pip install -r requirements.txt
         - pip install -r requirements-dev.txt
@@ -26,7 +24,6 @@ jobs:
       on:
         branch: master
       after_deploy:
-        - source env/bin/activate
         - export FLASK_APP=app
         - export FLASK_ENV=production
         - flask run
