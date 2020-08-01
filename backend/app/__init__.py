@@ -13,7 +13,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     # Initialize an instance of Cloud Firestore
-    cred = credentials.Certificate("instance/serviceAccountKey.json")
+    cred = credentials.Certificate("serviceAccountKey.json")
     firebase_admin.initialize_app(cred)
 
     app.config.from_mapping(
