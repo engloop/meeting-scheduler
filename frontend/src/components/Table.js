@@ -40,6 +40,10 @@ export class Table extends React.Component {
 	handleSubmit(e) {
 	  	e.preventDefault();
 		submit_availability(this.props.id, this.state)
+		.then(response => {
+			// reload page to trigger Coordinate component to refetch data
+			window.location.reload();
+		})
 		.catch(e => {
 			alert(e);
 		});
