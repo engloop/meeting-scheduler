@@ -14,7 +14,7 @@ export class Coordinate extends React.Component {
 			meetingId: this.props.match.params.meetingId,
 			meetingName:"",
 			meetingDates: null,
-	
+			participants: null
 		}
 	};
 
@@ -36,7 +36,8 @@ export class Coordinate extends React.Component {
  			const dates=this.getDates(response["data"]["dates"][0],response["data"]["dates"][1]);
  			this.setState({
  				meetingName: response["data"]["meetingName"],
- 				meetingDates: dates
+				meetingDates: dates,
+				participants: response["data"]["participants"]
  			});
 		})
   }
@@ -51,7 +52,7 @@ export class Coordinate extends React.Component {
   			<div class="with-margin">
 	  			<h1>Meeting Name: {this.state.meetingName}</h1>
 	  		</div>
-	  		<Table data={this.state.meetingDates}/>
+	  		<Table id={this.state.meetingId} data={this.state.meetingDates} prev={this.state.participants}/>
 	  	</Container>
   	);
   
