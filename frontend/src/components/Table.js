@@ -92,7 +92,7 @@ export class Table extends React.Component {
 	 				<tbody>
 					{this.getMiddleRows()}
 	 				<tr>
-	 					<td><input type="text" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
+	 					<td><input type="text" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
 	 				</tr>
 	 				</tbody>
