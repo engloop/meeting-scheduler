@@ -24,9 +24,22 @@ export class Table extends React.Component {
 		});
 	}
 
+	getMiddleRows() {
+		return this.props.prev.map((data)=>{
+			return (
+				<tr>
+					<td>{data["userName"]}</td>
+					{this.props.data.map((date)=>{
+						return <td> <input type="checkbox" disabled={true} checked={data["datesAvailable"][date]} /></td>
+					})}
+				</tr>
+			)
+		});
+	}
+
 	handleSubmit(e) {
 	  	e.preventDefault();
-		submit_availability(this.state)
+		submit_availability(this.props.id, this.state)
 		.catch(e => {
 			alert(e);
 		});
@@ -73,6 +86,7 @@ export class Table extends React.Component {
 	 					</tr>
 	 				</thead>
 	 				<tbody>
+					{this.getMiddleRows()}
 	 				<tr>
 	 					<td><input type="text" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
