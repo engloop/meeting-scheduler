@@ -1,9 +1,49 @@
+
+language: python
+python: 3.7
+cache:
+  directories:
+    - env
+before_install:
+  - cd backend
+  - ./create_env.sh
+  - source activate env
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+script:
+  - pytest
 deploy:
   provider: heroku
+  app: meeting-scheduler-backend
   api_key:
     secure: "331da9e9-5cf6-4bad-a1da-beff3976ca69"
   strategy: git
+on:
+  branch: master
 after_deploy:
-  - ./backend/run_app.sh
+  - ./run_app.sh
+
+
+language: node_js
+node_js:
+  - 'node'
+  - 'lts/*'
+cache:
+  directories:
+    - node_modules
+before_install:
   - cd frontend
-  - npm start
+install:
+  - npm install
+script:
+  - npm run build
+deploy:
+  provider: heroku
+  app: meeting-scheduler-frontend
+  api_key:
+    secure: "331da9e9-5cf6-4bad-a1da-beff3976ca69"
+  strategy: git
+  project: ./dist/
+on:
+  branch: master
