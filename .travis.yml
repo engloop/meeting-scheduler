@@ -21,7 +21,7 @@ jobs:
         provider: heroku
         app: meeting-scheduler-backend
         api_key:
-          secure: "VNb8TngMkRFev2MFB4F+S36eiRwxu/h7rMU85epbNHOtaHlVzly2XtX648sxCzQH9IKflTl+w/b8705eNAngpeZkKlSBKJCj4E7pTIFepXyjnlRMWIIxyjWkjyeMU21BohkgoRwTk1iUYRTSRh2SikjIOA7J89A/aIjoAvNQT0OD6zX5UK4taTwWpGopotkGS++QkgJSD+wZpSYvZeI3lNdK7IngHaTmYi/ec+jvLZbWfjCUIXE1Ww3rpX/CN3vUV4t0pszSQ3KIKxRaMdjESVbvki6KjwskIr8WV1tCxMgbSjHNXBtLamcucSlHles31ZXJyj/ID6kpWxmxfwBKqVW/najtoYsXX0yZ763BBJGFXHiH8tA1rhWlDArQoVOpXPJWm7/4eiGdggvNaAl2ibv8uga+h2khsNYGgLq2shEPkjOUKDZL8XbbDmts366n9mEqb7NZ9L1O/drMZx9tp1WuTYYiCrLPzJIE9E8z8+dtSR2YAY+msarhwMVrH/or7ojGYArn10YqT+k+8nshL365zzAeZcbooTJnYX85781kthBDpXDPoPQQvPpvR3wAD3JkV4w9RlwB95zl4Y0DHqdZw549jZ1GYioIv/MJyCuZijIh4BbSAI9tTgx7MaafT0HjLvPo/ztcO2f/BQrBtulIHbkOMxI+/+ghx4/nUF8="
+          secure: "30u862t1ChkIcXSxS36VVqcYnPVp+SlAfv9LPluseF6hBJk8ohZwtdH3PB5Z2t5b58lLRm09ZgfRf6KWe/rlmeH9ggSGNXZJ4eu5l5Mlx8Xy4u0FhPk+XNJQ2npHxSqDIING2JG05P/CzlYlHKxg8QR6Ejhxk59DUIvuxm/7LGyw744dpyKr+mHEcRPpnD0AKVW9qKUr99BI9Ca5LeCJvBiKsBmTDmf8iM0CDnaDDtvwenp8dW+a3duadyXw3IWgw8rHymTidikhsBj9ZPXn7GP2/M3Q7mZoAxB9tnY5+IEcVZLqzzbKAjGYpYLZffoP0Bqe0MjzvZgeVrFCyOUk6z6qXTDfDBnDopP9jMDppUnKv2L0KzNZdCnn9Uuh5XTbMUS0wBSsq1pNNiNSMT5tiY7iHfh20k9fMx23dfswaSU3MCiHWa/xv5IOOy0PftLK4A/iOS9FI0oYlg/DqbpihOQQ8b3AtGIkCVjh5oCm0MfRV/szxHfU+3PGA/J6gqJg3VVzfwTsX2lCa+rzOdr1r7TKxGqODVWUFFupVW8mCn8KuRSa0iS3DMuBhC3X9CERdKJFTk18e6k9aHGeSrAsSLWOk94tCS97FeFRN+BFWUeXrf27qRFDKJCQs8vk79btVPUvObCVL3I9GekcpH1YVpzWoSaanCHXTjVfcB3xtWs="
         strategy: git
       on:
         branch: master
@@ -45,7 +45,7 @@ jobs:
         provider: heroku
         app: meeting-scheduler-frontend
         api_key:
-          secure: "VNb8TngMkRFev2MFB4F+S36eiRwxu/h7rMU85epbNHOtaHlVzly2XtX648sxCzQH9IKflTl+w/b8705eNAngpeZkKlSBKJCj4E7pTIFepXyjnlRMWIIxyjWkjyeMU21BohkgoRwTk1iUYRTSRh2SikjIOA7J89A/aIjoAvNQT0OD6zX5UK4taTwWpGopotkGS++QkgJSD+wZpSYvZeI3lNdK7IngHaTmYi/ec+jvLZbWfjCUIXE1Ww3rpX/CN3vUV4t0pszSQ3KIKxRaMdjESVbvki6KjwskIr8WV1tCxMgbSjHNXBtLamcucSlHles31ZXJyj/ID6kpWxmxfwBKqVW/najtoYsXX0yZ763BBJGFXHiH8tA1rhWlDArQoVOpXPJWm7/4eiGdggvNaAl2ibv8uga+h2khsNYGgLq2shEPkjOUKDZL8XbbDmts366n9mEqb7NZ9L1O/drMZx9tp1WuTYYiCrLPzJIE9E8z8+dtSR2YAY+msarhwMVrH/or7ojGYArn10YqT+k+8nshL365zzAeZcbooTJnYX85781kthBDpXDPoPQQvPpvR3wAD3JkV4w9RlwB95zl4Y0DHqdZw549jZ1GYioIv/MJyCuZijIh4BbSAI9tTgx7MaafT0HjLvPo/ztcO2f/BQrBtulIHbkOMxI+/+ghx4/nUF8="
+          secure: "30u862t1ChkIcXSxS36VVqcYnPVp+SlAfv9LPluseF6hBJk8ohZwtdH3PB5Z2t5b58lLRm09ZgfRf6KWe/rlmeH9ggSGNXZJ4eu5l5Mlx8Xy4u0FhPk+XNJQ2npHxSqDIING2JG05P/CzlYlHKxg8QR6Ejhxk59DUIvuxm/7LGyw744dpyKr+mHEcRPpnD0AKVW9qKUr99BI9Ca5LeCJvBiKsBmTDmf8iM0CDnaDDtvwenp8dW+a3duadyXw3IWgw8rHymTidikhsBj9ZPXn7GP2/M3Q7mZoAxB9tnY5+IEcVZLqzzbKAjGYpYLZffoP0Bqe0MjzvZgeVrFCyOUk6z6qXTDfDBnDopP9jMDppUnKv2L0KzNZdCnn9Uuh5XTbMUS0wBSsq1pNNiNSMT5tiY7iHfh20k9fMx23dfswaSU3MCiHWa/xv5IOOy0PftLK4A/iOS9FI0oYlg/DqbpihOQQ8b3AtGIkCVjh5oCm0MfRV/szxHfU+3PGA/J6gqJg3VVzfwTsX2lCa+rzOdr1r7TKxGqODVWUFFupVW8mCn8KuRSa0iS3DMuBhC3X9CERdKJFTk18e6k9aHGeSrAsSLWOk94tCS97FeFRN+BFWUeXrf27qRFDKJCQs8vk79btVPUvObCVL3I9GekcpH1YVpzWoSaanCHXTjVfcB3xtWs="
         strategy: git
         project: ./dist/
       on:
