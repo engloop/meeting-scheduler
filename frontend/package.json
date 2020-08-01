@@ -25,7 +25,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "start": "node server/"
+    "start": "node server/",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
