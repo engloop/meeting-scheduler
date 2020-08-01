@@ -22,6 +22,7 @@ def create():
 	doc["id"] = id
 	doc["meetingName"] = req_obj['data']['meetingName']
 	doc["dates"] = req_obj['data']['dates']
+	doc["participants"] = []
 	# dates are in ISO-8601 format
 	# get_dates_in_range(start, stop)
 	# print(doc)
