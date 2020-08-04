@@ -16,12 +16,25 @@ body {
 }
 
 
-table, th, td {
+table {
+	border: 1px solid black;
+	width: 100%;
+	max-width: 100%;
+  	table-layout: fixed;
+  	display: table;
+} 
+ th, td {
   border: 1px solid black;
-}
-td, th{
   padding: 5px;
   text-align: center; /* center checkbox horizontally */
   vertical-align: middle; /* center checkbox vertically */
+}
+
+td {
+	display: table-cell;
+}
+
+.name {
+	width: 100%;
 }
 

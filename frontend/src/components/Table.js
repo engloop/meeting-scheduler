@@ -18,6 +18,13 @@ export class Table extends React.Component {
   	});
   }
 
+	getAvailabilityCounts() {
+		return this.props.data.map((date)=> {
+				return <td>1</td>
+			})
+
+	}
+
 	getLastRow() {
 		return this.props.data.map((date)=>{
 			return <td> <input id={date} type="checkbox" onChange={(value)=>this.updateDatesAvailable(value)}/></td>
@@ -37,12 +44,14 @@ export class Table extends React.Component {
 		});
 	}
 
+
 	handleSubmit(e) {
 	  	e.preventDefault();
 		submit_availability(this.props.id, this.state)
 		.then(response => {
 			// reload page to trigger Coordinate component to refetch data
 			window.location.reload();
+			console.log(response);
 		})
 		.catch(e => {
 			alert(e);
@@ -64,7 +73,7 @@ export class Table extends React.Component {
 
  	getHeader() {
 		return this.props.data.map((date)=>{
-			return <th key={date}>{date.toUpperCase().slice(0,10)}</th>
+			return <th key={date}>{date}</th>
 	 	})
 	 }
 
@@ -90,11 +99,17 @@ export class Table extends React.Component {
 	 					</tr>
 	 				</thead>
 	 				<tbody>
-					{this.getMiddleRows()}
-	 				<tr>
-	 					<td><input type="text" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
+						{this.getMiddleRows()}
+	 				
+	 					<td><input type="text" class="name" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
-	 				</tr>
+
+	 					<tr class="dateCounts"> 
+	 						<td></td>
+	 						{this.getAvailabilityCounts()}
+ 						</tr>
+
+	 			
 	 				</tbody>
 	 			</table>
 	 			</div>
