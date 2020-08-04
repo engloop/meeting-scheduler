@@ -23,7 +23,7 @@ export class Coordinate extends React.Component {
 	    var currentDate = moment(startDate);
 	    var stopDate = moment(stopDate);
 	    while (currentDate <= stopDate+1) {
-	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+	        dateArray.push( moment(currentDate).format('D-MMM') )
 	        currentDate = moment(currentDate).add(1, 'days');
 	    }
 	    return dateArray;
