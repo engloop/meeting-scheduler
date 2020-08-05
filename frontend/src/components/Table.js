@@ -20,7 +20,7 @@ export class Table extends React.Component {
 
 	getAvailabilityCounts() {
 		return this.props.data.map((date)=> {
-				return <td>1</td>
+				return <td class="counts">1</td>
 			})
 
 	}
@@ -104,8 +104,8 @@ export class Table extends React.Component {
 	 					<td><input type="text" class="name" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
 
-	 					<tr class="dateCounts"> 
-	 						<td></td>
+	 					<tr> 
+	 						<td class="counts"></td>
 	 						{this.getAvailabilityCounts()}
  						</tr>
 

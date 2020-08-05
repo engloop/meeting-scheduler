@@ -15,13 +15,18 @@ body {
   margin-bottom: 30px;
 }
 
+.counts{
+ 	border: none;
+}
 
 table {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	width: 100%;
 	max-width: 100%;
   	table-layout: fixed;
   	display: table;
+  	border-bottom: none
+
 } 
  th, td {
   border: 1px solid black;
@@ -37,4 +42,6 @@ td {
 .name {
 	width: 100%;
 }
+
+
 
