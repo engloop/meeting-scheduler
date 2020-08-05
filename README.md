@@ -1,4 +1,10 @@
-# meeting-scheduler
+
+<h1> Meeting Scheduler
+<a href="https://img.shields.io/travis/engloop/meeting-scheduler">
+    <img align="right" src="https://img.shields.io/travis/engloop/meeting-scheduler" class="build-status" alt="build status">
+</a>
+</h1>
+
 A web application to schedule a meeting among a group of participants
 
 ## Application Flow
@@ -58,11 +64,6 @@ A web application to schedule a meeting among a group of participants
     ]
 }
 ```
-
-## Questions
-1. Strings are being used to store dates. Is there a better way?
-2. 
-
 
 ## References
 1. https://github.com/briancappello/flask-react-spa
