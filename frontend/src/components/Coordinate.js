@@ -14,7 +14,8 @@ export class Coordinate extends React.Component {
 			meetingId: this.props.match.params.meetingId,
 			meetingName:"",
 			meetingDates: null,
-			participants: null
+			participants: null,
+			dateCounts: {}
 		}
 	};
 
@@ -22,8 +23,8 @@ export class Coordinate extends React.Component {
 	    var dateArray = [];
 	    var currentDate = moment(startDate);
 	    var stopDate = moment(stopDate);
-	    while (currentDate <= stopDate+1) {
-	        dateArray.push( moment(currentDate).format('D-MMM') )
+	    while (currentDate <= stopDate) {
+	        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
 	        currentDate = moment(currentDate).add(1, 'days');
 	    }
 	    return dateArray;
@@ -32,12 +33,12 @@ export class Coordinate extends React.Component {
 	 componentDidMount() {
 	 	get_meeting_data(this.state.meetingId)
 	 	.then(response => {
- 			// console.log(response);
  			const dates=this.getDates(response["data"]["dates"][0],response["data"]["dates"][1]);
  			this.setState({
  				meetingName: response["data"]["meetingName"],
 				meetingDates: dates,
-				participants: response["data"]["participants"]
+				participants: response["data"]["participants"],
+				dateCounts: response["data"]["allDates"]
  			});
 		})
   }
@@ -52,7 +53,7 @@ export class Coordinate extends React.Component {
   			<div class="with-margin">
 	  			<h1>Meeting Name: {this.state.meetingName}</h1>
 	  		</div>
-	  		<Table id={this.state.meetingId} data={this.state.meetingDates} prev={this.state.participants}/>
+	  		<Table id={this.state.meetingId} data={this.state.meetingDates} prev={this.state.participants} dateCounts={this.state.dateCounts}/>
 	  	</Container>
   	);
   

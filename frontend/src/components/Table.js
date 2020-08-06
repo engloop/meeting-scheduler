@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { submit_availability } from '../utils/http_functions';
-
+const Moment = require('moment');
+const MomentRange = require('moment-range');
+const moment = MomentRange.extendMoment(Moment);
 
 export class Table extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			datesAvailable: {},
-			userName: ""
+			userName: "",
+			dateCounts: {}
 		}
 	}
 
@@ -16,7 +19,17 @@ export class Table extends React.Component {
 		this.props.data.map((date)=>{
 			this.state.datesAvailable[date]=false;
   	});
+		this.setState({
+			dateCounts: this.props.dateCounts
+		});
   }
+
+	getAvailabilityCounts() {
+		return this.props.data.map((date)=> {
+				return <td class="counts">{this.state.dateCounts[date]}</td>
+			})
+
+	}
 
 	getLastRow() {
 		return this.props.data.map((date)=>{
@@ -37,12 +50,15 @@ export class Table extends React.Component {
 		});
 	}
 
+
 	handleSubmit(e) {
 	  	e.preventDefault();
 		submit_availability(this.props.id, this.state)
 		.then(response => {
+
 			// reload page to trigger Coordinate component to refetch data
 			window.location.reload();
+			
 		})
 		.catch(e => {
 			alert(e);
@@ -62,9 +78,11 @@ export class Table extends React.Component {
   		}))
   	}
 
+
+
  	getHeader() {
 		return this.props.data.map((date)=>{
-			return <th key={date}>{date.toUpperCase().slice(0,10)}</th>
+			return <th key={date}>{moment(date).format('D MMM')}</th>
 	 	})
 	 }
 
@@ -90,11 +108,17 @@ export class Table extends React.Component {
 	 					</tr>
 	 				</thead>
 	 				<tbody>
-					{this.getMiddleRows()}
-	 				<tr>
-	 					<td><input type="text" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
+						{this.getMiddleRows()}
+	 				
+	 					<td><input type="text" class="name" placeholder="Name" onChange={(value)=>this.changeValue(value, 'userName')}/></td>
 	 					{this.getLastRow()}
-	 				</tr>
+
+	 					<tr> 
+	 						<td class="counts"></td>
+	 						{this.getAvailabilityCounts()}
+ 						</tr>
+
+	 			
 	 				</tbody>
 	 			</table>
 	 			</div>

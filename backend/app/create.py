@@ -13,16 +13,18 @@ db = firestore.client()
 def create():
 	print("/api/create", request.method)
 	req_obj = request.get_json()
-	# print(req_obj)
-	
+
 	id = str(uuid.uuid4())
-	
+	all_dates=get_dates_in_range(req_obj['data']['dates'][0],req_obj['data']['dates'][1])
+
 	# create document to store
 	doc = {}
 	doc["id"] = id
 	doc["meetingName"] = req_obj['data']['meetingName']
 	doc["dates"] = req_obj['data']['dates']
 	doc["participants"] = []
+	doc["allDates"]={key: 0 for key in all_dates}
+
 	# dates are in ISO-8601 format
 	# get_dates_in_range(start, stop)
 	# print(doc)
